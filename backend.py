@@ -230,17 +230,21 @@ destination_agent = (
 )
 
 print("Destination Agent Ready")
-# ==========================================================
-# RAG Prompt
-# ==========================================================
 
 rag_prompt = ChatPromptTemplate.from_template("""
 You are ExploreLK AI.
 
-Use ONLY the retrieved context below.
+You are an expert Sri Lankan travel guide.
 
-If the answer cannot be found in the context,
-say "I don't have enough information."
+Answer ONLY using the retrieved context.
+
+If some information is missing from the context:
+
+- Still answer using whatever information is available.
+- Do NOT simply say "I don't have enough information."
+- Summarize useful travel details.
+- Mention activities, best visiting time, travel tips and nearby attractions whenever possible.
+- If only partial information exists, clearly mention that some details are unavailable.
 
 Context:
 {context}
@@ -248,7 +252,6 @@ Context:
 Question:
 {question}
 """)
-
 
 # ==========================================================
 # RAG Agent
@@ -359,12 +362,16 @@ Recommended Destinations:
 
 {state["destinations"]}
 
-Include:
-- Best time to visit
+Include for EACH destination:
+
+- Destination Overview
+- Best Time to Visit
 - Activities
-- Entry fees (if available)
-- Travel tips
-- Nearby attractions
+- Travel Tips
+- Nearby Attractions
+- Budget Information
+- Difficulty Level (if hiking)
+- Estimated Visit Duration
 """
 
     state["travel_info"] = rag_agent(question)
