@@ -159,3 +159,13 @@ After the application starts, open your browser and visit:
 ```
 http://localhost:8501
 ```
+
+## 🌐 Live Demo
+
+### GitHub Repository
+
+https://github.com/Dilki456/ExploreLK
+
+### Streamlit Application
+
+https://explorelk.streamlit.app
