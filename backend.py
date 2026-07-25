@@ -1,7 +1,4 @@
-# ==========================================================
 # ExploreLK AI Backend
-# ==========================================================
-
 import os
 from typing import TypedDict
 
@@ -26,10 +23,7 @@ from langgraph.graph import (
     START,
     END
 )
-# ==========================================================
 # Environment Variables
-# ==========================================================
-
 load_dotenv()
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
@@ -38,10 +32,7 @@ if not GROQ_API_KEY:
     raise ValueError("GROQ_API_KEY not found in .env file")
 
 print("Environment Variables Loaded")
-# ==========================================================
 # Load Dataset
-# ==========================================================
-
 DATASET_PATH = "data/hidden_gems_srilanka.xlsx"
 
 df = pd.read_excel(DATASET_PATH)
@@ -59,10 +50,7 @@ dataset_text = df[
         "Description"
     ]
 ].to_string(index=False)
-# ==========================================================
 # Load Knowledge Base
-# ==========================================================
-
 KNOWLEDGE_PATH = "knowledge_base"
 
 loader = PyPDFDirectoryLoader(KNOWLEDGE_PATH)
@@ -70,10 +58,7 @@ loader = PyPDFDirectoryLoader(KNOWLEDGE_PATH)
 documents = loader.load()
 
 print(f"Knowledge Base Loaded ({len(documents)} PDF documents)")
-# ==========================================================
 # Text Chunking
-# ==========================================================
-
 text_splitter = RecursiveCharacterTextSplitter(
     chunk_size=500,
     chunk_overlap=100
@@ -82,19 +67,13 @@ text_splitter = RecursiveCharacterTextSplitter(
 chunks = text_splitter.split_documents(documents)
 
 print(f"Text Chunking Completed ({len(chunks)} chunks)")
-# ==========================================================
 # Embedding Model
-# ==========================================================
-
 embedding_model = HuggingFaceEmbeddings(
     model_name="sentence-transformers/all-MiniLM-L6-v2"
 )
 
 print("Embedding Model Loaded")
-# ==========================================================
 # ChromaDB
-# ==========================================================
-
 CHROMA_PATH = "chroma_db"
 
 if os.path.exists(CHROMA_PATH):
@@ -117,10 +96,7 @@ retriever = vector_db.as_retriever(
 )
 
 print("Retriever Ready")
-# ==========================================================
 # Groq Models
-# ==========================================================
-
 fast_llm = ChatGroq(
     api_key=GROQ_API_KEY,
     model="llama-3.1-8b-instant",
@@ -134,10 +110,7 @@ smart_llm = ChatGroq(
 )
 
 print("Groq Models Loaded")
-# ==========================================================
 # Preference Agent
-# ==========================================================
-
 preference_prompt = ChatPromptTemplate.from_messages([
     (
         "system",
@@ -179,10 +152,7 @@ preference_agent = (
 )
 
 print("Preference Agent Ready")
-# ==========================================================
 # Destination Agent
-# ==========================================================
-
 destination_prompt = ChatPromptTemplate.from_messages([
     (
         "system",
@@ -252,11 +222,7 @@ Context:
 Question:
 {question}
 """)
-
-# ==========================================================
 # RAG Agent
-# ==========================================================
-
 def rag_agent(question: str):
 
     docs = retriever.invoke(question)
@@ -274,12 +240,7 @@ def rag_agent(question: str):
 
 
 print("RAG Agent Ready")
-
-
-# ==========================================================
 # Itinerary Planner
-# ==========================================================
-
 planner_prompt = ChatPromptTemplate.from_template("""
 You are ExploreLK AI's itinerary planner.
 
@@ -311,10 +272,7 @@ def itinerary_planner(travel_info: str):
 
 
 print("Itinerary Planner Ready")
-# ==========================================================
 # LangGraph State
-# ==========================================================
-
 class TravelState(TypedDict):
     budget: str
     days: str
@@ -325,12 +283,7 @@ class TravelState(TypedDict):
     destinations: str
     travel_info: str
     itinerary: str
-
-
-# ==========================================================
 # Nodes
-# ==========================================================
-
 def preference_node(state: TravelState):
 
     state["preferences"] = preference_agent.invoke({
@@ -381,11 +334,7 @@ Include for EACH destination:
     )
 
     return state
-
-# ==========================================================
 # Build Graph
-# ==========================================================
-
 builder = StateGraph(TravelState)
 
 builder.add_node("Preference", preference_node)
@@ -400,12 +349,7 @@ builder.add_edge("RAG", END)
 travel_graph = builder.compile()
 
 print("LangGraph Ready")
-
-
-# ==========================================================
 # Main Function
-# ==========================================================
-
 def generate_trip(
     budget,
     days,
@@ -423,11 +367,7 @@ def generate_trip(
     return result
 
 print("Backend Ready")
-
-# ==========================================================
 # Backend Initializer
-# ==========================================================
-
 _backend_initialized = False
 
 def initialize_backend():
