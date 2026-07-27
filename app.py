@@ -210,23 +210,3 @@ if generate:
         except Exception as e:
             st.error("❌ An error occurred while generating the travel plan.")
             st.exception(e)
-
-# Footer
-st.markdown("---")
-
-col1, col2, col3 = st.columns(3)
-
-with col1:
-    st.metric("📄 Knowledge Base", "29 PDFs")
-
-with col2:
-    st.metric("🤖 AI Agents", "4")
-
-with col3:
-    st.metric("🧠 RAG", "Enabled")
-
-st.markdown("---")
-
-st.caption(
-    "🌿 ExploreLK AI • Hidden Gems Travel Planner for Sri Lanka • Powered by LangGraph, ChromaDB & Groq"
-)
