@@ -10,15 +10,15 @@ The application uses **LangGraph**, **Retrieval-Augmented Generation (RAG)**, **
 
 ## ✨ Features
 
-- 🌿 Discover hidden tourist destinations
-- 🤖 Multi-Agent travel planning
-- 📚 Retrieval-Augmented Generation (RAG)
-- 📄 Knowledge Base with 29 PDF documents
-- 🧠 ChromaDB Vector Database
-- ⚡ Groq Llama Models
-- 🎯 Personalized destination recommendations
-- 🗓️ AI-generated travel itineraries
-- 🌐 Interactive Streamlit web application
+- Discover hidden tourist destinations
+- Multi-Agent travel planning
+- Retrieval-Augmented Generation (RAG)
+- Knowledge Base with 29 PDF documents
+- ChromaDB Vector Database
+- Groq Llama Models
+- Personalized destination recommendations
+- AI-generated travel itineraries
+- Interactive Streamlit web application
 
 ---
 
