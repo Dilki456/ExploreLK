@@ -1,5 +1,6 @@
 import streamlit as st
 from backend import generate_trip
+from towns import towns
 
 # Page Configuration
 st.set_page_config(
@@ -109,9 +110,11 @@ with st.container(border=True):
             ["1", "2", "3", "4", "5+"]
         )
 
-    location = st.text_input(
-        "📍 Starting Location",
-        placeholder="e.g. Kandy"
+    location = st.selectbox(
+    "📍 Starting Location",
+    options=towns,
+    index=None,
+    placeholder="Type or select your town..."
     )
 
     interests = st.multiselect(
