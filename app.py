@@ -64,23 +64,6 @@ Groq Llama 3.3
     st.info("🇱🇰 Explore Sri Lanka like never before!")
     st.markdown("---")
 
-st.subheader("💡 Quick Tips")
-
-st.write("""
-✅ Select your budget
-
-✅ Choose your interests
-
-✅ Enter your starting location
-
-✅ Click Generate My Travel Plan
-""")
-st.markdown("---")
-
-st.caption("Version 2.0")
-
-st.caption("Made for Sri Lankan Travelers 🇱🇰")
-
 # Header
 st.markdown("""
 <div style="
