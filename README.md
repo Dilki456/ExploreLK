@@ -1,4 +1,4 @@
-# 🌿 ExploreLK
+# ExploreLK
 
 ## Discover Sri Lanka's Hidden Gems
 
@@ -8,7 +8,7 @@ The application uses **LangGraph**, **Retrieval-Augmented Generation (RAG)**, **
 
 ---
 
-## ✨ Features
+## Features
 
 - Discover hidden tourist destinations
 - Multi-Agent travel planning
@@ -22,7 +22,7 @@ The application uses **LangGraph**, **Retrieval-Augmented Generation (RAG)**, **
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 | Category | Technology |
 |----------|------------|
@@ -38,7 +38,7 @@ The application uses **LangGraph**, **Retrieval-Augmented Generation (RAG)**, **
 | Knowledge Base | 29 PDF Documents |
 | Dataset | Hidden Gems Sri Lanka Dataset (.xlsx) |
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
 ExploreLK/
@@ -58,7 +58,7 @@ ExploreLK/
 │
 └── chroma_db/
 ```
-## 🏗️ System Architecture
+## System Architecture
 
 ```text
                      User
@@ -85,7 +85,7 @@ Preference Agent  Destination Agent   RAG Agent
                        ▼
         Personalized Travel Recommendation
 ```
-## 🤖 Multi-Agent Workflow
+## Multi-Agent Workflow
 
 The ExploreLK system uses four specialized AI agents that work together through LangGraph.
 
@@ -105,7 +105,7 @@ The ExploreLK system uses four specialized AI agents that work together through 
 - Generates a personalized travel itinerary.
 - Suggests activities, travel tips, and recommended visit times.
 
-## 🚀 Installation
+## Installation
 
 ### 1. Clone the Repository
 
@@ -160,7 +160,7 @@ After the application starts, open your browser and visit:
 http://localhost:8501
 ```
 
-## 🌐 Live Demo
+## Live Demo
 
 ### GitHub Repository
 
