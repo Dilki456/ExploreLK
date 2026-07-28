@@ -5,7 +5,6 @@ from towns import towns
 # Page Configuration
 st.set_page_config(
     page_title="ExploreLK AI",
-    page_icon="images/logo.png",
     layout="wide"
 )
 
@@ -59,11 +58,6 @@ Groq Llama 3.3
         Generation (RAG).
         """
     )
-
-    st.markdown("---")
-
-    st.info("🇱🇰 Explore Sri Lanka like never before!")
-    st.markdown("---")
 
 # Header
 st.markdown("""
